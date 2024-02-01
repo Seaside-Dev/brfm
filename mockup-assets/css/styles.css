@@ -1,0 +1,1214 @@
+/*-------------
+ 	General
+-------------*/
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+@import "colors.css";
+@import "login.css";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,400;0,500;0,600;0,700;1,200;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,400;0,500;0,600;0,700;1,200;1,400&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;1,6..12,200&display=swap');
+@import "../../museum/museo.css";
+@import "../../webfontkit/stylesheet.css";
+@import "station-einzeln.css";
+@import "tooltip.css";
+
+:root {
+    --main-purple: #191d44;
+    --logo-purple: #1F3076;
+    --off-white: #ebf5f5;
+    /*--off-white: hsla(10, 23%, 95%, 1);*/
+    --yello:  rgb(47, 170, 177);
+    --grey: rgb(132, 132, 132);
+    --fa-font-family: "Font Awesome 6 Free";
+    --pale-green: #d5f8f2;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font: 16px/1.5 "Nunito Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
+    width: 100%;
+    background: #191d44;
+    background-size: cover;
+    background: radial-gradient( rgba(34,59,148,1), rgba(25,29,68,1));
+}
+
+*, body *,
+body *:before,
+body *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+::before, ::after {
+    box-sizing: border-box;
+}
+
+html {
+    font: normal 16px sans-serif;
+    color: #fff;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+html, body {
+    margin: 0;
+    height: 100vh;
+}
+
+/* Step 1: Common Properties
+These styles are required to make icons render reliably */
+.icon::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.logo {
+    margin: .5rem 3rem;
+    cursor: pointer;
+
+}
+
+.logo img {
+    width: 11rem;
+    z-index: 10;
+}
+
+ul, nav {
+    list-style: none;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width:100vw;
+}
+
+nav {
+    display: flex;
+    align-content: space-around;
+}
+
+nav a {
+    color: #fff;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 200;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar li {
+    min-width: 8rem;
+}
+
+.navbar li.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar ul .dropdown .dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    display:block;
+    background-color: var(--logo-purple);
+    min-width: 200px;
+    box-shadow: 0 0 3px rgba(88, 18, 166, .5);
+    z-index: 5;
+    margin-top: 1rem;
+    margin-left: 0;
+    transition: max-height 0.9s ease;
+    position: absolute;
+}
+
+.navbar ul .dropdown:hover .dropdown-content {
+    display: block;
+    max-height: 600px;
+}
+
+
+.dropdown-content li {
+    text-align: center;
+    margin: 0 auto;
+    min-width: 200px;
+}
+
+.dropdown-content a {
+    color: #FFFFFF;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.dropdown-content a::before {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dropdown-content a:hover::before {
+    content: url("../img/ziegel_KH.svg");
+    transform: scale(40%);
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    top: 0.4rem;
+    left: 6px;
+    position: absolute;
+}
+
+.navbar .dropdown-content li a::after, .navbar .dropdown-content li a:hover::after {
+    background-color: transparent;
+    width: 0;
+}
+
+.dropdown-content .inactive {
+    filter: grayscale(70%)
+}
+
+.dropdown-content .inactive:hover,
+.inactive:hover a {
+    filter: grayscale(70%);
+    background-color:rgba(255,255,255,.5);
+    cursor:default!important;
+}
+
+.dropdown-content:hover .dropdown-content {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-purple);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+a:active, a:hover {
+    text-decoration: none;
+    outline: none;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+a.btn, input[type="submit"] {
+    color: var(--main-purple);
+    text-transform: uppercase;
+    border: 2px solid var(--main-purple);
+    border-radius: 4px;
+    font-weight: 200;
+    font-size: 1rem;
+    letter-spacing: 0.03rem;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: transparent;
+    padding: 20px 46px;
+}
+
+.reviews a.btn {
+    margin:1.8rem auto;
+    color:#fff;
+    border:2px solid #fff;
+}
+.hex.generic {
+    position: relative;
+    width: 82px;
+    height: 47.34px;
+    line-height: 23px;
+    background-color: rgb(47, 170, 177);
+    margin: 40px auto;
+    color: white;
+    text-align: center;
+}
+.hex.generic:before,
+.hex.generic:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0;
+    border-left: 41px solid transparent;
+    border-right: 41px solid transparent;
+}
+.hex.generic:before {
+    bottom: 100%;
+    border-bottom: 23.67px solid rgb(47, 170, 177);
+}
+.hex.generic:after {
+    top: 100%;
+    width: 0;
+    border-top: 23.67px solid rgb(47, 170, 177);
+}
+
+a.btn:hover, input[type="submit"]:hover {
+    color: var(--off-white);
+    background-color: var(--main-purple);
+    cursor: pointer;
+    outline: var(--main-purple) solid 1px;
+    outline-offset: 3px;
+}
+.reviews a.btn:hover {
+    color: var(--main-purple);
+    background-color: #fff;
+    cursor: pointer;
+    outline: #fff solid 1px;
+    outline-offset: 3px;
+}
+
+.button, button {
+    background: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover, button:hover {
+    outline: var(--pale-green) solid 1px;
+    outline-offset: 3px;
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Museo300", serif;
+}
+
+p, label {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+p {
+    max-inline-size: 66ch;
+    text-wrap: balance;
+}
+
+label {
+    text-transform: uppercase;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    border-top: 1px solid rgba(3, 28, 49, 0.1);
+    border-bottom: 1px solid var(--grey);
+    padding-bottom: 3rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.item-center {
+    align-self: center;
+}
+
+.item-left {
+    align-self: flex-start;
+}
+
+.item-right {
+    align-self: end;
+}
+
+.text-center {
+    text-align: center;
+}
+
+input:focus-visible, input:focus {
+    outline: var(--main-purple) solid 1px;
+    outline-offset: 3px;
+    -moz-outline-radius: 2px;
+    border: var(--main-purple) solid 2px;
+}
+
+@media (max-width: 1000px) {
+
+    .container {
+        padding: 100px 50px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 80px 30px;
+    }
+
+}
+
+.container h3.title {
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 32px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.container p {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 35px;
+    padding: 0 20px;
+    line-height: 2;
+}
+
+ul.grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*-------------
+ 	Header
+-------------*/
+header {
+    z-index: 20;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    padding: 0.5rem 2.8rem 0;
+    background-color: #191d44;
+    color: #fff;
+}
+
+.border::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Set the width of the repeating PNG image */
+    height: 15px; /* Set the height of the repeating PNG image */
+    background-image: url("../img/ziegel_KH_min.png"); /* Replace 'your-image.png' with the path to your PNG image */
+    background-size: 15px 15px; /* Set the size of the repeating PNG image */
+    background-repeat: repeat-x; /* Repeat the image horizontally */
+}
+
+header nav {
+    display: flex;
+    margin-right: 4rem;
+}
+
+header nav li {
+    margin: 0 15px;
+    align-self: center;
+}
+
+.navbar a {
+    position: relative;
+    padding: 0.5rem;
+}
+
+footer a, .footer-nav a {
+    color: rgba(255, 255, 255, .6);
+    text-transform: uppercase;
+    position: relative;
+    padding: 0.5rem;
+}
+
+.footer-nav a {
+    padding-bottom: .5rem;
+    padding-left: 0;
+}
+
+footer a:hover,
+.footer-nav a:active,
+.footer-nav a:hover,
+.footer-nav a:active,
+.navbar a:active,
+.navbar a:hover,
+.navbar a:focus {
+    color: #67deca;
+    transition: color;
+}
+
+.footer-nav a::after,
+.navbar a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 8px; /* Set your border-bottom height */
+    background-color: #67deca; /* Set your border-bottom color */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease, color 0.3s ease; /* Add a smooth transition for the width property */
+}
+
+.footer-nav a:hover::after,
+.navbar a:hover::after {
+    width: 100%; /* Set the width to 100% on hover */
+}
+
+@media (max-width: 1000px) {
+    header {
+        padding: 20px 50px;
+    }
+}
+
+
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+    }
+
+    header h2 {
+        margin-bottom: 15px;
+    }
+}
+
+#menuButton {
+    display: none;
+}
+
+.progress-circle {
+    width: 200px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+.circular-div {
+    position: relative;
+    width: 10rem; /* Adjust the width of the circular div as needed */
+    height: 10rem; /* Adjust the height of the circular div as needed */
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 20;
+}
+
+
+.circle {
+    background-color: rgba(124,49,244,.8);
+    border-radius: 50%;
+    z-index:-1;
+    position:absolute;
+}
+
+.yello-circle {
+    width: 50rem;
+    height: 50rem;
+    position: absolute;
+    background-color: yellow;
+    border-radius: 50%;
+    top: -490px;
+    left: 29.5rem;
+    z-index: -1;
+}
+
+.ziegelweg.reviews {
+    height: auto;
+    position: relative;
+    left: -46rem;
+    bottom: -1.6rem;
+    transform: scale(-1, 1);
+    background-color: transparent;
+    scale: 1.4;
+}
+
+.ziegel-circle.reviews {
+    height: auto;
+    position: absolute;
+    right: -10rem;
+    top: 96.2rem;
+    transform: scale(1.26);
+    background-color: transparent;
+}
+
+.para {
+    margin: 2rem auto;
+    align-self: center;
+    display: flex;
+}
+
+/*----------------
+ 	Hero Section
+----------------*/
+/*.map-tag {*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    background-color: var(--yello); !* Set your desired marker color *!*/
+/*    border-radius: 50%;*/
+/*    border: 2px solid #ffffff; !* Set your desired border color *!*/
+/*    box-shadow: 0 0 5px rgba(88, 18, 166,.5); !* Optional: Add a shadow for depth *!*/
+/*}*/
+
+/*.price-tag {*/
+/*    background-color: var(--yello);*/
+/*    border-radius: 50%;*/
+/*    width: 4rem;*/
+/*    height: 4rem;*/
+/*    border: 2px solid #ffffff; !* Set your desired border color *!*/
+/*    box-shadow: 0 0 3px rgba(88, 18, 166, .5);*/
+/*    color: #FFFFFF;*/
+/*    font-size: 14px;*/
+/*    padding: 10px 15px;*/
+/*    position: relative;*/
+/*}*/
+
+/*.price-tag::after {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*    transform: translate(-70%, 0);*/
+/*    width: 0;*/
+/*    height: 0;*/
+/*    bottom: -30px;*/
+/*    left: 0;*/
+/*    border: 10px solid transparent;*/
+/*    border-top: 17px solid var(--yello);*/
+/*}*/
+.backgr-img {
+    width:100%;
+    height:auto;
+}
+
+.pin {
+    position: relative;
+    z-index: 50;
+}
+
+/*.pin1 {*/
+/*    top: 40%;*/
+/*    left: 50%;*/
+/*    !*margin-left: -115px;*!*/
+/*}*/
+
+.tag {
+    position: absolute;
+    left: 46%;
+    top: 39%;
+    color: var(--yello);
+    font-size: 5rem;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    color: orangered;
+    text-shadow: 0 2px 5px rgba(88, 18, 166, .8);
+    top: 39%;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    top: 24%;
+    left: 54%;
+    z-index: 100;
+}
+
+.popup p {
+    margin: 0;
+    color: var(--grey);
+}
+
+.popup h4, .popup a {
+    color: orangered;
+    transition: all 0.3s ease;
+}
+
+.popup a:hover, .popup a:focus {
+    color: var(--main-purple);
+}
+
+.popup button {
+    margin-top: 10px;
+    border: none;
+    outline: 0;
+    text-align: right;
+    margin-left: 290px;
+    font-size: .9rem;
+    color: var(--main-purple);
+    transition: color 0.3s ease;
+}
+
+.popup button::before {
+    font: var(--fa-font-solid);
+    font-weight: 900;
+    content: "\f057";
+    color: var(--main-purple);
+    padding-right: 5px;
+    font-size: 1.3rem;
+    vertical-align: center;
+    top: 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.popup button:hover, .popup button:hover::before {
+    color: orangered;
+}
+
+.popup img {
+    width: 400px;
+}
+
+.hero {
+    position: relative;
+    justify-content: center;
+    color: var(--pale-green);
+    text-align: center;
+    padding: 2.3rem 0 0 0;
+}
+#plus {
+    font-family: 'arista_pro_trialbold';
+    text-transform: lowercase;
+    margin-left: -.5rem;
+    font-size: 3.6rem;
+}
+/*.hero .background-image {*/
+/*    background-position: center 0;*/
+/*    background-repeat: no-repeat;*/
+/*    width: 100vw;*/
+/*    height: 120rem;*/
+/*    background-size: contain;*/
+/*    position: relative;*/
+/*}*/
+
+/*.hero > .background-image {*/
+/*    aspect-ratio: 1.38/1;*/
+/*}*/
+
+.hero h1 {
+    font-family: "museo_sans900", sans-serif;
+    margin:4rem 1rem 1rem;
+    color:var(--pale-green);
+    font-size: 3.2rem;
+    text-transform: uppercase;
+    letter-spacing: .01em;
+    z-index: 10;
+}
+
+.hero h3 {
+    font-size: 1.5rem;
+    font-family: "museo_sans900";
+    margin-bottom: 40px;
+    color: var(--pale-green);
+    z-index: 10;
+}
+
+.hero a.btn,
+input[type=submit] {
+    padding: 20px 46px;
+}
+
+input[type=file] > button {
+    padding: 10px;
+}
+
+@media (max-width: 800px) {
+
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero h3 {
+        font-size: 24px;
+    }
+
+    .hero a.btn {
+        padding: 15px 40px;
+    }
+
+}
+
+
+/*--------------------
+ 	Our Work Section
+---------------------*/
+
+.оur-work {
+    background-color: #fff;
+}
+
+.our-work .grid li {
+    padding: 10px;
+    height: 350px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    background-clip: content-box;
+    background-size: cover;
+    background-position: center;
+    background-color: #333;
+    transition: border 0.37s ease;
+}
+
+.our-work .grid li:hover {
+    border: 1px solid var(--main-purple);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.our-work .grid li.small {
+    flex-basis: 40%;
+}
+
+.our-work .grid li.large {
+    flex-basis: 60%;
+}
+
+
+@media (max-width: 1000px) {
+
+    .our-work .grid li.small,
+    .our-work .grid li.large {
+        flex-basis: 100%;
+    }
+
+}
+
+
+/*----------------------
+ 	Features Section
+----------------------*/
+
+.features {
+    color: #fff;
+}
+
+.features #feature {
+    color: #fff;
+}
+
+.features .grid li {
+    padding: 0 30px;
+    flex-basis: 33%;
+    text-align: center;
+}
+
+.features .grid li i {
+    font-size: 50px;
+    color: var(--yello);
+    margin-bottom: 25px;
+    transition: all 0.1s ease;
+}
+
+.features .grid li i:hover {
+    border-radius: 4px;
+    outline: 1px solid var(--yello);
+    outline-offset: 3px;
+}
+
+.features .grid li h4 {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.features .grid li p {
+    margin: 0;
+
+}
+
+@media (max-width: 1000px) {
+
+    .features .grid li {
+        flex-basis: 70%;
+        margin-bottom: 65px;
+    }
+
+    .features .grid li:last-child {
+        margin-bottom: 0;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .features .grid li {
+        flex-basis: 100%;
+    }
+
+}
+
+#anmelden {
+    margin: 1rem auto;
+}
+
+#anmelden input[type="submit"] {
+    background-color: rgba(255, 255, 255, .7);
+    transition: all 0.3s ease;
+    padding:1rem 1.8rem;
+    border-radius: 4px;
+    font-family: 'Nunito Sans';
+}
+
+
+#anmelden input[type="submit"]:hover {
+    color: var(--main-purple);
+    background-color: var(--yello);
+    outline: 1px solid var(--yello);
+    outline-offset: 3px;
+
+}
+
+/*--------------------
+     Reviews Section
+--------------------*/
+
+.reviews .quote {
+    text-align: center;
+    width: 80%;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.reviews .author {
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+.reviews .author:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 1000px) {
+
+    .reviews .quote {
+        font-size: 20px;
+    }
+
+    .reviews .author {
+        font-size: 16px;
+    }
+
+}
+
+
+/*---------------------
+     Contact Section
+---------------------*/
+
+.contact {
+    background-color: #f7f7f7;
+    justify-content: space-around;
+    padding:10rem;
+}
+
+/*.contact .item + .contact.item {*/
+/*    border-top: 1px solid var(--grey);*/
+/*}*/
+
+/*.contact .item {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    width: 100%;*/
+/*    justify-content: space-around;*/
+/*}*/
+
+.contact p {
+    text-align: center;
+    text-wrap: balance;
+    margin-bottom: 4rem;
+    color:var(--logo-purple);
+}
+.contact h3.title {
+    color:var(--logo-purple);
+
+}
+
+.contact form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 45rem;
+}
+
+.contact .form-group {
+    pointer-events: none;
+}
+
+.contact form .form-field {
+    padding: 15px;
+    flex: 1;
+    font-size: 18px;
+    color: var(--grey);
+    -webkit-appearance: none;
+    border: 1px solid var(--grey);
+    border-radius: 4px 0 0 4px;
+    transition: border 0.3s ease;
+    pointer-events: auto;
+}
+
+.form-field:focus-within {
+    border-color: var(--logo-purple);
+}
+
+.form-group > span,
+.form-group .form-field {
+    white-space: nowrap;
+    display: block;
+}
+
+.form-group:focus-within {
+    outline: 1px solid var(--logo-purple);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.form-group > span {
+    text-align: center;
+    padding: 14px 42px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    background: transparent;
+    text-transform: uppercase;
+    border: 1px solid var(--logo-purple);
+    transition: all 0.3s ease;
+}
+
+.form-group:focus-within > span,
+.form-group:focus-within > span a {
+    color: #fff;
+    background: var(--logo-purple);
+    border-color: var(--logo-purple);
+    pointer-events: auto;
+}
+
+.form-group:focus-within > .form-field {
+    outline: none;
+}
+
+.contact .form-group > span .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-group > span,
+.form-group .form-field {
+    border-radius: 0 4px 4px 0;
+}
+
+@media (max-width: 800px) {
+
+    .contact form input {
+        flex-basis: 100%;
+        margin: 0 0 20px 0;
+    }
+
+}
+
+
+/*-------------
+     Footer
+-------------*/
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    /*text-align: center;*/
+    color: #fff;
+    background-color: #191d44;
+    padding: .6rem 7rem;
+    position: sticky;
+}
+
+footer > * {
+    flex: 0.25 2 0;
+}
+
+footer ul {
+    display: flex;
+    margin: 25px 0 12px;
+    font-size: 32px;
+}
+
+footer .footer-nav {
+    flex-direction: column;
+    font-size: .8rem;
+    text-align: left;
+}
+
+.footer-nav li {
+    margin: 0;
+}
+
+footer ul li {
+    margin: 0 8px;
+}
+
+footer ul li:first-child {
+    margin-left: 0;
+}
+
+footer ul li:last-child {
+    margin-right: 0;
+}
+
+footer p {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 10px;
+}
+
+footer p a {
+    color: #fff;
+}
+
+footer .fa {
+    transition: all 0.3s ease;
+}
+
+footer .fa:hover {
+    outline: 1px solid var(--yello);
+    border-radius: 2px;
+    outline-offset: 3px;
+}
+
+.footer-nav li {
+    margin: 0.25rem 0;
+}
+
+.sticky {
+    position: absolute;
+    bottom: -.9rem;
+    right: -50px;
+    transform: translate(40%, 1138%);
+    background-color: transparent;
+    width: 50rem;
+    height: 25rem;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.sponsors {
+    background-color: var(--yello);
+    border-radius: 50%;
+    width: 40rem;
+    height: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.sponsors:hover {*/
+/*    rotate: -120deg;*/
+/*    transition: rotate 2s;*/
+/*}*/
+.logo-container {
+    display: block;
+    position: relative;
+    top: -10px;
+    left: 0;
+    width: 6em;
+    height: 6em;
+    margin-bottom: 4rem;
+    margin-right: 2rem;
+}
+
+.logo-container > * {
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: 43%;
+    width: 6em;
+    height: 6em;
+}
+
+.logo-container > *:nth-of-type(1) {
+    transform: rotate(0deg) translate(12rem) rotate(90deg);
+}
+
+.logo-container > *:nth-of-type(2) {
+    transform: rotate(45deg) translate(12rem) rotate(90deg);
+}
+
+.logo-container > *:nth-of-type(3) {
+    transform: rotate(90deg) translate(12rem) rotate(90deg);
+}
+
+.logo-container > *:nth-of-type(4) {
+    transform: rotate(135deg) translate(12rem) rotate(90deg);
+}
+
+.logo-container > *:nth-of-type(5) {
+    transform: rotate(180deg) translate(12rem) rotate(90deg);
+}
+
+.logo-container > *:nth-of-type(6) {
+    transform: rotate(225deg) translate(12rem) rotate(90deg);
+}
+
+.logo-container > *:nth-of-type(7) {
+    transform: rotate(270deg) translate(12rem) rotate(90deg);
+}
+
+.logo-container > *:nth-of-type(8) {
+    transform: rotate(315deg) translate(12rem) rotate(90deg);
+}
+
+.logo-container img {
+    display: block;
+    max-width: 100%;
+    border-radius: 4px;
+    width: 12rem;
+}
+
+@media (max-width: 700px) {
+
+    footer {
+        padding: 80px 15px;
+    }
+
+}
+
+
+/* -- Demo ads -- */
+
+@media (max-width: 1200px) {
+    #bsaHolder {
+        display: none;
+    }
+}
+
+

@@ -1,0 +1,25 @@
+/* CSS HEX */
+:root{
+--white: #ffffff;
+--off-white: #F5F0EF;
+--violet: #7a2ff4;
+--gold: #ffd400;
+--grey:#D2CAC8;
+
+/* CSS HSL */
+--white: hsla(0, 0%, 100%, 1);
+--timberwolf: hsla(15, 28%, 89%, 1);
+--violet: hsla(263, 90%, 57%, 1);
+--gold: hsla(50, 100%, 50%, 1);
+}
+
+
+.shadow {
+    box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.1);
+}
+
+.box {
+    background-color: #f3f4f6;
+    border-color: transparent;
+    border-radius: 1.2rem;
+}

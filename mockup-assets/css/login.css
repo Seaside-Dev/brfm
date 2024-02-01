@@ -1,0 +1,111 @@
+.login-form {
+    width: 60vw;
+    height: 75vh;
+    background: var(--off-white);
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "login";
+    border-radius: 6px;
+    box-shadow: inset 0 0 3px 2px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+    margin:5rem auto 6rem;
+}
+
+.design {
+    grid-area: design;
+    background-color: #40AA4F;
+    display: none;
+    box-shadow: 0 20px 10px -20px rgba(0, 0, 0, 0.45) inset,
+    0 -20px 10px -20px rgba(0, 0, 0, 0.45) inset,
+    20px 0 10px -20px rgba(0, 0, 0, 0.45) inset;
+    position: relative; /* Add this line */
+
+}
+
+.design .pill-1 {
+    position: absolute;
+    width: 8rem;
+    height: 8rem;
+    background: var(--pale-green);
+    border-radius: 50%;
+    bottom: 0;
+    transform: translateX(-50px) translateY(10px);
+}
+
+.design .pill-2 {
+    position: absolute;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    bottom: 0;
+    transform: translateX(-65px) translateY(130px);
+    background: #2DAAA6;
+}
+
+.login {
+    grid-area: login;
+    background-color: #2DAAA6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:var(--logo-purple);
+}
+
+.login-user, .data-up {
+    margin: 3rem auto;
+    background-color: var(--pale-green);
+    border-radius: 4px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.data-up {
+    width: 80%;
+    margin-top: 5.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+input#file > button {
+    padding:4px!important;
+    border:0;
+    outline:none;
+}
+.login-user input, .data-up input {
+    margin: 1rem auto;
+    padding: .85rem;
+    width: 18rem;
+    border-radius: 4px;
+    border: 1px solid #40AA4F;
+}
+
+.login h3, .design h3 {
+    text-align: center;
+    margin: 2rem auto;
+    color: var(--main-purple);
+    font-family: "Nunito Sans", sans-serif;
+    text-transform: uppercase;
+    font-weight: 200;
+    z-index: 2;
+}
+
+.design h3 {
+    margin-top: 6rem;
+}
+
+@media (min-width: 768px) {
+    .login-form {
+        grid-template-columns: 40% 60%;
+        grid-template-areas: "design login";
+    }
+
+    .design {
+        display: block;
+        box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.65) inset, 0 -2px 4px -2px rgba(0, 0, 0, 0.65) inset, 3px 0 4px -2px rgba(0, 0, 0, 0.65) inset;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+}
